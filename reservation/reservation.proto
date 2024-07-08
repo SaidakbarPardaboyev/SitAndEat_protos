@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+option go_package = "genproto/resirvation";
+
+package resirvation;
+
+service Resirvation{
+    rpc Createreservations(RequestReservations) returns(Status);
+    rpc GetAllReservations(Void) returns(Reservations);
+    rpc GetByIdReservations(ReservationId) returns(Reservation);
+    rpc UpdateReservations(ReservationUpdate) returns(Status);
+    rpc DeleteReservations(ReservationId) returns(Status);
+    rpc GetReservationsByUserId(UserId) returns(Reservations);
+    rpc OrderMeal(Order) returns (Status);
+    rpc PayForReservation(Payment) returns (Status);
+}
+
+message Status{
+    bool Status = 1;
+}
+
+message RequestReservations{
+    string userId = 1;
+    string restaurantId = 2;
+}
+
+message Void{}
+
+message Reservation{
+    string id = 1;
+    string userId = 2;
+    string restuarantId = 3;
+    string resTime = 4;
+    string status = 5;
+    string createdAt = 6;
+    string updateAt = 7;
+}
+
+message ReservationUpdate {
+    string id = 1;
+    string userId = 2;
+    string restuarantId = 3;
+    string resTime = 4;
+    string status = 5;
+}
+
+message Reservations{
+    repeated Reservation reservations = 1;
+}
+
+message ReservationId{
+    string Id = 1;
+}
+
+
+message GetReservationsRequest{
+    string userId=1;
+    string restaurantId=2;
+}
+
+message UserId{
+    string Id = 1;
+}
+
+message Order{
+    string menuItemId = 1;
+    string reservatinId = 2;
+    int32 quantity = 3;
+}
+
+
+message Payment{
+    
+}

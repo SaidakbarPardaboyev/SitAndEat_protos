@@ -1,25 +1,15 @@
 syntax = "proto3";
 
-option go_package = "genproto/resirvation";
+option go_package = "genproto/restaurant";
 
-package resirvation;
+package restaurant;
 
-
-service Resirvation{
+service restaurant{
     rpc CreateRestaurant(Restuarant) returns(Status){}
-    rpc GetAllRestaurants(AllRestuarant) returns(Restuanants){}
+    rpc GetAllRestaurants(Void) returns(Restuanants){}
     rpc GetRestuarant(RestuanantId) returns(GetRes){}
-    rpc UpdateRestuarant(GetRes) returns(Status){}
+    rpc UpdateRestuarant(RestuarantUpdate) returns(Status){}
     rpc DeleteRestuarant(RestuanantId) returns(Status){}
-
-    rpc Createreservations(RequestReservations) returns(Status);
-    rpc GetAllReservations(AllReservations) returns(Reservations);
-    rpc GetByIdReservations(ReservationId) returns(Reservation);
-    rpc UpdateReservations(Reservation) returns(Status);
-    rpc DeleteReservations(ReservationId) returns(Status);
-    rpc GetReservationsCheck(UserId) returns(Reservations);
-    rpc CreateReservationsOrder(Order) returns (Status);
-    rpc CreateReservationsPayment(Payment) returns (Status);
 }
 
 message Restuarant{
@@ -33,15 +23,14 @@ message Status{
     bool Status = 1;
 }
 
-message AllRestuarant{}
-
+message Void{}
 
 message Restuanants{
     repeated GetRes restuanants = 1;
 }
 
 message RestuanantId{
-    string restuarantId = 1;
+    string Id = 1;
 }
 
 message GetRes{
@@ -54,53 +43,10 @@ message GetRes{
     string updatedAt = 7;
 }
 
-message RequestReservations{
-    string userId=1;
-    string restaurantId=2;
-}
-
-message AllReservations{}
-
-message Reservation{
+message RestuarantUpdate {
     string id = 1;
-    string userId = 2;
-    string restuarantId = 3;
-    string resTime = 4;
-    string status = 5;
-    string createdAt = 6;
-    string updateAt = 7;
-}
-
-message Reservations{
-    repeated Reservation reservations = 1;
-}
-
-message ReservationId{
-    string reservationId = 1;
-}
-
-
-message GetReservationsRequest{
-    string userId=1;
-    string restaurantId=2;
-}
-
-message UserId{
-    string userId = 1;
-}
-
-message Order{
-    string menuItemId = 1;
-    string reservatinId = 2;
-    int32 quantity = 3;
-}
-
-
-message OrderId{
-    string orderId = 1;
-}
-
-message Payment{
-    string reservationId = 1;
-    float amount = 2;
+    string name = 2;
+    string address = 3;
+    string phone = 4;
+    string description = 5;
 }
