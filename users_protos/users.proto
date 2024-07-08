@@ -29,7 +29,8 @@ message LoginUser{
 }
 
 message Token{
-    string token = 1;
+    string accesToken = 1;
+    string refreshToken = 2;
 }
 
 message UserId{
