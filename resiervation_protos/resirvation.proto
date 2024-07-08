@@ -12,14 +12,14 @@ service Resirvation{
     rpc UpdateRestuarant(GetRes) returns(Status){}
     rpc DeleteRestuarant(RestuanantId) returns(Status){}
 
-    rpc Createreservations(RequestReservations) returns(ResponseReservations);
-    rpc GetAllReservations(GetRequestReservations) returns(GetResponseReservations);
-    rpc GetByIdReservations(GetByIdRequest) returns(GetByIdReponse);
-    rpc UpdateReservations(UpdateReservationsRequest) returns(UpdateReservationsResponse);
-    rpc DeleteReservations(DeleteReservationsRequest) returns(DeleteReservationsReponse);
-    rpc GetReservationsCheck(GetReservationsRequest) returns(GetReservationsResponse);
-    rpc CreateReservationsIdOrder(CreateReservationsOrderRequest) returns (CreateReservationsOrderResponse);
-    rpc CreateReservationsIdPayment(CreateReservationsIdPaymentRequest) returns (CreateReservationsIdPaymentResponse);
+    rpc Createreservations(RequestReservations) returns(Status);
+    rpc GetAllReservations(AllReservations) returns(Reservations);
+    rpc GetByIdReservations(ReservationId) returns(Reservation);
+    rpc UpdateReservations(Reservation) returns(Status);
+    rpc DeleteReservations(ReservationId) returns(Status);
+    rpc GetReservationsCheck(UserId) returns(Reservations);
+    rpc CreateReservationsOrder(Order) returns (Status);
+    rpc CreateReservationsPayment(Payment) returns (Status);
 }
 
 message Restuarant{
@@ -59,81 +59,43 @@ message RequestReservations{
     string restaurantId=2;
 }
 
-message ResponseReservations{
-    bool status=1;
-    string message=2;
+message AllReservations{}
+
+message Reservation{
+    string id = 1;
+    string userId = 2;
+    string restuarantId = 3;
+    string resTime = 4;
+    string status = 5;
+    string createdAt = 6;
+    string updateAt = 7;
 }
 
-message GetRequestReservations{}
-
-message GetResponseReservations{
-    string id=1;
-    string userId=2;
-    string restaurantId=3;
-    string reservationTime=4;
-    string status=5;
-    string created_at=6;
-    string updated_at=7;
+message Reservations{
+    repeated Reservation reservations = 1;
 }
 
-message GetByIdRequest{
-    string id=1;
+message ReservationId{
+    string reservationId = 1;
 }
 
-message GetByIdReponse{
-    string userId=1;
-    string restaurantId=2;
-    string reservationTime=3;
-    string status=4;
-}
-
-message UpdateReservationsRequest{
-    string id=1;
-}
-
-message UpdateReservationsResponse{
-    string restaurantId=1;
-    string status=2;
-    string reservationTime=3;
-}
-
-message DeleteReservationsRequest{
-    string id=1;
-}
-
-message DeleteReservationsReponse{
-    bool status=1;
-    string message=2;
-}
 
 message GetReservationsRequest{
     string userId=1;
     string restaurantId=2;
 }
 
-message GetReservationsResponse{
-    bool status=1;
-    string message=2;
+message UserId{
+    string userId = 1;
 }
 
-message CreateReservationsOrderRequest{
-    string userId=1;
-    string restaurant=2;
-    string menuId=4;
+message Order{
+    string menuItemId = 1;
+    string reservatinId = 2;
+    int32 quantity = 3;
 }
 
-message CreateReservationsOrderResponse{
-    string name=1;
-    string description=2;
-    double price=3;
-    bytes image=4;
-}
 
-message CreateReservationsIdPaymentRequest{
-    string id=1;
-}
-
-message CreateReservationsIdPaymentResponse{
-    bool status=1;
-    string message=2;
+message Payment{
+    
 }
