@@ -70,5 +70,6 @@ message Order{
 
 
 message Payment{
-    
+    string reservationId = 1;
+    float amount = 2;
 }
