@@ -11,6 +11,15 @@ service Resirvation{
     rpc GetRestuarant(RestuanantId) returns(GetRes){}
     rpc UpdateRestuarant(GetRes) returns(Status){}
     rpc DeleteRestuarant(RestuanantId) returns(Status){}
+
+    rpc Createreservations(RequestReservations) returns(ResponseReservations);
+    rpc GetAllReservations(GetRequestReservations) returns(GetResponseReservations);
+    rpc GetByIdReservations(GetByIdRequest) returns(GetByIdReponse);
+    rpc UpdateReservations(UpdateReservationsRequest) returns(UpdateReservationsResponse);
+    rpc DeleteReservations(DeleteReservationsRequest) returns(DeleteReservationsReponse);
+    rpc GetReservationsCheck(GetReservationsRequest) returns(GetReservationsResponse);
+    rpc CreateReservationsIdOrder(CreateReservationsOrderRequest) returns (CreateReservationsOrderResponse);
+    rpc CreateReservationsIdPayment(CreateReservationsIdPaymentRequest) returns (CreateReservationsIdPaymentResponse);
 }
 
 message Restuarant{
@@ -43,4 +52,88 @@ message GetRes{
     string description = 5;
     string createdAt = 6;
     string updatedAt = 7;
+}
+
+message RequestReservations{
+    string userId=1;
+    string restaurantId=2;
+}
+
+message ResponseReservations{
+    bool status=1;
+    string message=2;
+}
+
+message GetRequestReservations{}
+
+message GetResponseReservations{
+    string id=1;
+    string userId=2;
+    string restaurantId=3;
+    string reservationTime=4;
+    string status=5;
+    string created_at=6;
+    string updated_at=7;
+}
+
+message GetByIdRequest{
+    string id=1;
+}
+
+message GetByIdReponse{
+    string userId=1;
+    string restaurantId=2;
+    string reservationTime=3;
+    string status=4;
+}
+
+message UpdateReservationsRequest{
+    string id=1;
+}
+
+message UpdateReservationsResponse{
+    string restaurantId=1;
+    string status=2;
+    string reservationTime=3;
+}
+
+message DeleteReservationsRequest{
+    string id=1;
+}
+
+message DeleteReservationsReponse{
+    bool status=1;
+    string message=2;
+}
+
+message GetReservationsRequest{
+    string userId=1;
+    string restaurantId=2;
+}
+
+message GetReservationsResponse{
+    bool status=1;
+    string message=2;
+}
+
+message CreateReservationsOrderRequest{
+    string userId=1;
+    string restaurant=2;
+    string menuId=4;
+}
+
+message CreateReservationsOrderResponse{
+    string name=1;
+    string description=2;
+    double price=3;
+    bytes image=4;
+}
+
+message CreateReservationsIdPaymentRequest{
+    string id=1;
+}
+
+message CreateReservationsIdPaymentResponse{
+    bool status=1;
+    string message=2;
 }
