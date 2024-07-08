@@ -21,7 +21,7 @@ message Restuarant{
 }
 
 message Status{
-    bool true = 1;
+    bool Status = 1;
 }
 
 message AllRestuarant{}
@@ -41,6 +41,6 @@ message GetRes{
     string address = 3;
     string phone = 4;
     string description = 5;
-    string created_at = 6;
-    string updated_at = 7;
+    string createdAt = 6;
+    string updatedAt = 7;
 }
