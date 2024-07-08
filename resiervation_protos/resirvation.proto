@@ -4,62 +4,27 @@ option go_package = "genproto/resirvation";
 
 package resirvation;
 
-
 service Resirvation{
-    rpc CreateRestaurant(Restuarant) returns(Status){}
-    rpc GetAllRestaurants(AllRestuarant) returns(Restuanants){}
-    rpc GetRestuarant(RestuanantId) returns(GetRes){}
-    rpc UpdateRestuarant(GetRes) returns(Status){}
-    rpc DeleteRestuarant(RestuanantId) returns(Status){}
-
     rpc Createreservations(RequestReservations) returns(Status);
-    rpc GetAllReservations(AllReservations) returns(Reservations);
+    rpc GetAllReservations(Void) returns(Reservations);
     rpc GetByIdReservations(ReservationId) returns(Reservation);
-    rpc UpdateReservations(Reservation) returns(Status);
+    rpc UpdateReservations(ReservationUpdate) returns(Status);
     rpc DeleteReservations(ReservationId) returns(Status);
-    rpc GetReservationsCheck(UserId) returns(Reservations);
-    rpc CreateReservationsOrder(Order) returns (Status);
-    rpc CreateReservationsPayment(Payment) returns (Status);
-}
-
-message Restuarant{
-    string name = 1;
-    string address = 2;
-    string phone = 3;
-    string description = 4;
+    rpc GetReservationsByUserId(UserId) returns(Reservations);
+    rpc OrderMeal(Order) returns (Status);
+    rpc PayForReservation(Payment) returns (Status);
 }
 
 message Status{
     bool Status = 1;
 }
 
-message AllRestuarant{}
-
-
-message Restuanants{
-    repeated GetRes restuanants = 1;
-}
-
-message RestuanantId{
-    string restuarantId = 1;
-}
-
-message GetRes{
-    string id = 1;
-    string name = 2;
-    string address = 3;
-    string phone = 4;
-    string description = 5;
-    string createdAt = 6;
-    string updatedAt = 7;
-}
-
 message RequestReservations{
-    string userId=1;
-    string restaurantId=2;
+    string userId = 1;
+    string restaurantId = 2;
 }
 
-message AllReservations{}
+message Void{}
 
 message Reservation{
     string id = 1;
@@ -71,12 +36,20 @@ message Reservation{
     string updateAt = 7;
 }
 
+message ReservationUpdate {
+    string id = 1;
+    string userId = 2;
+    string restuarantId = 3;
+    string resTime = 4;
+    string status = 5;
+}
+
 message Reservations{
     repeated Reservation reservations = 1;
 }
 
 message ReservationId{
-    string reservationId = 1;
+    string Id = 1;
 }
 
 
@@ -86,7 +59,7 @@ message GetReservationsRequest{
 }
 
 message UserId{
-    string userId = 1;
+    string Id = 1;
 }
 
 message Order{
