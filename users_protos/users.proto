@@ -6,7 +6,7 @@ package users;
 
 service Users{
     rpc Register(RegisterUser) returns(Status){}
-    rpc Login(LoginUser) returns(Status){}
+    rpc Login(LoginUser) returns(Token){}
     rpc GetProfile(UserId) returns(GetUser){}
     rpc UpdateProfile(UpdateProf) returns(Status){}
     rpc DeleteProfile(UserId) returns(Status){}
@@ -24,8 +24,12 @@ message Status{
 }
 
 message LoginUser{
-    string username = 1;
+    string email = 1;
     string password = 2;
+}
+
+message Token{
+    string token = 1;
 }
 
 message UserId{
