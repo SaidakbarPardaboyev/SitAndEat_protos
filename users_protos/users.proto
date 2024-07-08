@@ -29,7 +29,7 @@ message LoginUser{
 }
 
 message Token{
-    string accesToken = 1;
+    string accessToken = 1;
     string refreshToken = 2;
 }
 
