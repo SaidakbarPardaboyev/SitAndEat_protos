@@ -6,14 +6,14 @@ package resirvation;
 
 
 service Resirvation{
-    rpc CreateRestaurant(Restuanant) returns(Status){}
+    rpc CreateRestaurant(Restuarant) returns(Status){}
     rpc GetAllRestaurants(AllRestuarant) returns(Restuanants){}
-    rpc GetRestuarant(RestuanantId) returns(Restuanant){}
-    rpc UpdateRestuarant(UpdateRes) returns(Status){}
+    rpc GetRestuarant(RestuanantId) returns(GetRes){}
+    rpc UpdateRestuarant(GetRes) returns(Status){}
     rpc DeleteRestuarant(RestuanantId) returns(Status){}
 }
 
-message Restuanant{
+message Restuarant{
     string name = 1;
     string address = 2;
     string phone = 3;
@@ -26,15 +26,16 @@ message Status{
 
 message AllRestuarant{}
 
+
 message Restuanants{
-    repeated Restuanant restuanants = 1;
+    repeated GetRes restuanants = 1;
 }
 
 message RestuanantId{
     string restuarantId = 1;
 }
 
-message UpdateRes{
+message GetRes{
     string restuanantId = 1;
     string name = 2;
     string address = 3;
