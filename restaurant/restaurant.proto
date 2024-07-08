@@ -96,6 +96,11 @@ message Order{
 }
 
 
+message OrderId{
+    string orderId = 1;
+}
+
 message Payment{
-    
+    string reservationId = 1;
+    float amount = 2;
 }
