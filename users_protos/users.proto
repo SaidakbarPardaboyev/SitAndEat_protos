@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option go_package = "genproto/users";
+
+package users;
+
+service Users{
+    rpc Register(RegisterUser) returns(Status){}
+    rpc Login(LoginUser) returns(Status){}
+    rpc GetProfile(UserId) returns(GetUser){}
+    rpc UpdateProfile(UpdateProf) returns(Status){}
+    rpc DeleteProfile(UserId) returns(Status){}
+}
+
+message RegisterUser{
+    string username = 1;
+    string password = 2;
+    string email = 3;
+    string phone = 4;
+}
+
+message Status{
+    bool status = 1;
+}
+
+message LoginUser{
+    string username = 1;
+    string password = 2;
+}
+
+message UserId{
+    string userId = 1;
+}
+
+message GetUser{
+    string username = 1;
+    string email = 2;
+    string phone = 3;
+}
+
+message UpdateProf{
+    string UserId = 1;
+    string username = 2;
+    string password = 3;
+    string email = 4;
+    string phone = 5;
+}

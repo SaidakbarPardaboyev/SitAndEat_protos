@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option go_package = "genproto/resirvation";
+
+package resirvation;
+
+
+service Resirvation{
+    rpc CreateRestaurant(Restuanant) returns(Status){}
+    rpc GetAllRestaurants(AllRestuarant) returns(Restuanants){}
+    rpc GetRestuarant(RestuanantId) returns(Restuanant){}
+    rpc UpdateRestuarant(UpdateRes) returns(Status){}
+    rpc DeleteRestuarant(RestuanantId) returns(Status){}
+}
+
+message Restuanant{
+    string name = 1;
+    string address = 2;
+    string phone = 3;
+    string description = 4;
+}
+
+message Status{
+    bool true = 1;
+}
+
+message AllRestuarant{}
+
+message Restuanants{
+    repeated Restuanant restuanants = 1;
+}
+
+message RestuanantId{
+    string restuarantId = 1;
+}
+
+message UpdateRes{
+    string restuanantId = 1;
+    string name = 2;
+    string address = 3;
+    string phone = 4;
+    string description = 5;
+}
