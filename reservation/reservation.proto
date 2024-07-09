@@ -38,10 +38,8 @@ message Reservation{
 
 message ReservationUpdate {
     string id = 1;
-    string userId = 2;
-    string restuarantId = 3;
-    string resTime = 4;
-    string status = 5;
+    string restuarantId = 2;
+    string status = 3;
 }
 
 message Reservations{

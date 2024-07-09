@@ -4,54 +4,52 @@ option go_package = "genproto/menu";
 
 package menu;
 
-
-service Menu{
-    rpc CreateFood(CreateF) returns(Status){}
-    rpc GetAllFoods(Void) returns(Foods){}
-    rpc GetFood(FoodId) returns(Food){}
-    rpc UpdateFood(UpdateF) returns(Status){}
-    rpc DeleteFood(FoodId) returns(Status){}
+service Menu {
+    rpc CreateFood(CreateF) returns (Status) {}
+    rpc GetAllFoods(Void) returns (Foods) {}
+    rpc GetFood(FoodId) returns (Food) {}
+    rpc UpdateFood(UpdateF) returns (Status) {}
+    rpc DeleteFood(FoodId) returns (Status) {}
 }
 
-message CreateF{
+message CreateF {
     string restuarantId = 1;
     string name = 2;
     string description = 3;
     float price = 4;
-    repeated bytes image = 5;
+    bytes image = 5;
 }
 
+message Void {}
 
-message Void{}
-
-message Food{
+message Food {
     string id = 1;
     string restuarantId = 2;
     string name = 3;
     string description = 4;
     float price = 5;
-    repeated bytes image = 6;
-    string CreatedAt = 7;
-    string UpdateAt = 8;
+    bytes image = 6;
+    string created_at = 7;
+    string update_at = 8;
 }
 
-message Foods{
+message Foods {
     repeated Food foods = 1;
 }
 
-message FoodId{
+message FoodId {
     string id = 1;
 }
 
-message Status{
+message Status {
     bool status = 1;
 }
 
-message UpdateF{
+message UpdateF {
     string id = 1;
     string restuarantId = 2;
     string name = 3;
     string description = 4;
     float price = 5;
-    repeated bytes image = 6;
+    bytes image = 6;
 }
