@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option go_package = "genproto/payment";
+
+package payment;
+
+service Payment{
+    rpc CreatePayments(CreatePayment) returns(Status);
+    rpc GetByIdPayments(GetById) returns(GetByIdResponse);
+    rpc UpdatePayments(UpdatePayment) returns (Status);
+}
+
+message CreatePayment{
+    string reservationId=1;
+    double amount=2;
+    string paymentmethod=3;
+    string paymentstatus=4;
+}
+
+message Status{
+    string message=1;
+    bool status=2;
+}
+
+message GetById{
+    string id=1;
+}
+
+message GetByIdResponse{
+    string id=1;
+    string reservationId=2;
+    double amount=3;
+    string paymentmethod=4;
+    string paymentstatus=5;
+}
+
+message UpdatePayment{
+    string id=1;
+}
