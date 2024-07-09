@@ -4,46 +4,46 @@ option go_package = "genproto/restaurant";
 
 package restaurant;
 
-service restaurant{
-    rpc CreateRestaurant(Restuarant) returns(Status){}
-    rpc GetAllRestaurants(Void) returns(Restuanants){}
-    rpc GetRestuarant(RestuanantId) returns(GetRes){}
-    rpc UpdateRestuarant(RestuarantUpdate) returns(Status){}
-    rpc DeleteRestuarant(RestuanantId) returns(Status){}
+service RestaurantService {
+    rpc CreateRestaurant(Restaurant) returns (Status) {}
+    rpc GetAllRestaurants(Void) returns (Restaurants) {}
+    rpc GetRestaurant(RestaurantId) returns (GetRes) {}
+    rpc UpdateRestaurant(RestaurantUpdate) returns (Status) {}
+    rpc DeleteRestaurant(RestaurantId) returns (Status) {}
 }
 
-message Restuarant{
+message Restaurant {
     string name = 1;
     string address = 2;
     string phone = 3;
     string description = 4;
 }
 
-message Status{
-    bool Status = 1;
+message Status {
+    bool status = 1;
 }
 
-message Void{}
+message Void {}
 
-message Restuanants{
-    repeated GetRes restuanants = 1;
+message Restaurants {
+    repeated GetRes restaurants = 1;
 }
 
-message RestuanantId{
-    string Id = 1;
+message RestaurantId {
+    string id = 1;
 }
 
-message GetRes{
+message GetRes {
     string id = 1;
     string name = 2;
     string address = 3;
     string phone = 4;
     string description = 5;
-    string createdAt = 6;
-    string updatedAt = 7;
+    string created_at = 6;
+    string updated_at = 7;
 }
 
-message RestuarantUpdate {
+message RestaurantUpdate {
     string id = 1;
     string name = 2;
     string address = 3;
