@@ -18,7 +18,7 @@ message CreateF{
     string name = 2;
     string description = 3;
     float price = 4;
-    repeated bytes image = 5;
+    bytes image = 5;
 }
 
 
@@ -30,7 +30,7 @@ message Food{
     string name = 3;
     string description = 4;
     float price = 5;
-    repeated bytes image = 6;
+    bytes image = 6;
     string CreatedAt = 7;
     string UpdateAt = 8;
 }
@@ -53,5 +53,5 @@ message UpdateF{
     string name = 3;
     string description = 4;
     float price = 5;
-    repeated bytes image = 6;
+    bytes image = 6;
 }
