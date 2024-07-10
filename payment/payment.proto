@@ -6,7 +6,7 @@ package payment;
 
 service Payment{
     rpc CreatePayments(CreatePayment) returns(Status);
-    rpc GetByIdPayments(GetById) returns(GetByIdResponse);
+    rpc GetPaymentStatusById(GetById) returns(GetByIdResponse);
     rpc UpdatePayments(UpdatePayment) returns (Status);
 }
 
@@ -27,13 +27,12 @@ message GetById{
 }
 
 message GetByIdResponse{
-    string id=1;
-    string reservationId=2;
-    double amount=3;
-    string paymentmethod=4;
     string paymentstatus=5;
 }
 
 message UpdatePayment{
-    string id=1;
+    string id = 1;
+    float amount = 2;
+    string payment_method = 3;
+    string payment_status = 4;
 }
