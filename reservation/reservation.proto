@@ -27,19 +27,7 @@ message RequestReservations{
 
 message Filter {
   string query = 1;
-  repeated FilterItem arr = 2;
-}
-
-message FilterItem {
-  string value = 1;
-}
-
-service MyService {
-  rpc ApplyFilter(Filter) returns (Response);
-}
-
-message Response {
-  string message = 1;
+  repeated string arr = 2;
 }
 
 
