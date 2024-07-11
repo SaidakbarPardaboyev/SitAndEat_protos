@@ -6,7 +6,7 @@ package resirvation;
 
 service Resirvation{
     rpc Createreservations(RequestReservations) returns(Status);
-    rpc GetAllReservations(Filter) returns(Reservations);
+    rpc GetAllReservations(FilterField) returns(Reservations);
     rpc GetByIdReservations(ReservationId) returns(Reservation);
     rpc UpdateReservations(ReservationUpdate) returns(Status);
     rpc DeleteReservations(ReservationId) returns(Status);
@@ -25,9 +25,10 @@ message RequestReservations{
 }
 
 
-message Filter {
-  string query = 1;
-  repeated string arr = 2;
+message FilterField{
+    string status = 1;
+    string createdAt = 2;
+    string updateAt = 3;
 }
 
 
