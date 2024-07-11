@@ -6,7 +6,7 @@ package restaurant;
 
 service restaurant{
     rpc CreateRestaurant(Restuarant) returns(Status){}
-    rpc GetAllRestaurants(Void) returns(Restuanants){}
+    rpc GetAllRestaurants(Filter) returns(Restuanants){}
     rpc GetRestuarant(RestuanantId) returns(GetRes){}
     rpc UpdateRestuarant(RestuarantUpdate) returns(Status){}
     rpc DeleteRestuarant(RestuanantId) returns(Status){}
@@ -23,7 +23,10 @@ message Status{
     bool Status = 1;
 }
 
-message Void{}
+message Filter{
+    repeated string arr = 1;
+    string query = 2;
+}
 
 message Restuanants{
     repeated GetRes restuanants = 1;
