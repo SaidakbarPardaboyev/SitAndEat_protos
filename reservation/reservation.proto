@@ -26,6 +26,7 @@ message RequestReservations{
 
 message Filter{
     string query = 1;
+    repeated string arr = 2;
 }
 
 message Reservation{
