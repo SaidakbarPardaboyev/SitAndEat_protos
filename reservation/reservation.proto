@@ -29,6 +29,8 @@ message FilterField{
     string status = 1;
     string createdAt = 2;
     string updateAt = 3;
+    string limit = 4;
+    string offset = 5;
 }
 
 

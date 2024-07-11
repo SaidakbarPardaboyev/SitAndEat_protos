@@ -28,6 +28,8 @@ message FilterField{
     string address = 2;
     string description = 3;
     string createdAt = 4;
+    string limit = 5;
+    string offset = 6;
 }
 
 message Restuanants{
