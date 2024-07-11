@@ -24,8 +24,8 @@ message Status{
 }
 
 message Filter{
-    string query = 1;
-    repeated string arr = 2;
+    repeated string arr = 1;
+    string query = 2;
 }
 
 message Restuanants{
