@@ -5,7 +5,7 @@ option go_package = "genproto/resirvation";
 package resirvation;
 
 service Resirvation{
-    rpc Createreservations(RequestReservations) returns(Status);
+    rpc Createreservations(RequestReservations) returns(ReservationId);
     rpc GetAllReservations(FilterField) returns(Reservations);
     rpc GetByIdReservations(ReservationId) returns(Reservation);
     rpc UpdateReservations(ReservationUpdate) returns(Status);
