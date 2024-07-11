@@ -6,7 +6,7 @@ package resirvation;
 
 service Resirvation{
     rpc Createreservations(RequestReservations) returns(Status);
-    rpc GetAllReservations(Void) returns(Reservations);
+    rpc GetAllReservations(Filter) returns(Reservations);
     rpc GetByIdReservations(ReservationId) returns(Reservation);
     rpc UpdateReservations(ReservationUpdate) returns(Status);
     rpc DeleteReservations(ReservationId) returns(Status);
@@ -24,7 +24,9 @@ message RequestReservations{
     string restaurantId = 2;
 }
 
-message Void{}
+message Filter{
+    string query = 1;
+}
 
 message Reservation{
     string id = 1;
